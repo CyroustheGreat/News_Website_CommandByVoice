@@ -1,1 +1,1 @@
-npm i @alan-ai/alan-sdk-web @material-ui/core words-to-number
+npm i @alan-ai/alan-sdk-web @material-ui/core classnames words-to-numbers
