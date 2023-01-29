@@ -10,6 +10,7 @@ const alanKey =
 
 const App = () => {
   const [newsArticles, setNewsArticles] = useState([]);
+  const [activeArticle, setActiveArticle] = useState(-1);
   const classes = useStyles();
   useEffect(() => {
     alanBtn({
@@ -17,7 +18,11 @@ const App = () => {
       onCommand: ({ command, articles }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles); /*  hooking the newarticles to articles */
+          setActiveArticle(-1);
 
+        }
+        else if (command === "highlight") {
+          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
         }
       },
     });
@@ -27,7 +32,7 @@ const App = () => {
       <div className={classes.logoContainer}>
         <img src="https://www.victoria.ca/images/logo-victoria-print.png" className={classes.alanLogo} width="168" height="78" alt="Logo" id="print-logo" />
       </div>
-      <NewsCards articles={newsArticles} />
+      <NewsCards articles={newsArticles} activeArticle={activeArticle} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import useStyles from "./styles";
+import classNames from "classnames";
 import {
   Card,
   CardActions,
@@ -12,12 +13,12 @@ import {
 
 const NewsCard = ({
   article: { description, publishedAt, source, url, title, urlToImage },
-  i,
+  i, activeArticle
 }) => {
   // create a hook from makeStyles from styles.js
   const classes = useStyles();
   return (
-    <Card className={classes.card}>
+    <Card className={classNames(classes.card, activeArticle === i ? classes.activeCard : null)}>
       <CardActionArea href={url} target="_blank">
         <CardMedia
           className={classes.media}
